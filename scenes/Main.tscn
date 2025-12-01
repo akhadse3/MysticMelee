@@ -1,0 +1,571 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvmain001"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_main"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12, 0.08, 0.18, 1)
+
+[node name="BackgroundPattern" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.1, 0.22, 0.3)
+
+[node name="GameLayout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="HBoxContainer" parent="GameLayout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 45)
+theme_override_constants/separation = 10
+
+[node name="MenuButton" type="Button" parent="GameLayout/TopBar"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 40)
+text = "MENU"
+theme_override_font_sizes/font_size = 16
+
+[node name="BackButton" type="Button" parent="GameLayout/TopBar"]
+visible = false
+layout_mode = 2
+custom_minimum_size = Vector2(100, 0)
+text = "← Back"
+
+[node name="MessagePanel" type="PanelContainer" parent="GameLayout/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MessageLabel" type="Label" parent="GameLayout/TopBar/MessagePanel"]
+layout_mode = 2
+text = "Welcome to Mystic Melee!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="Button" parent="GameLayout/TopBar"]
+visible = false
+layout_mode = 2
+custom_minimum_size = Vector2(100, 0)
+text = "⚙ Settings"
+
+[node name="NewGameButton" type="Button" parent="GameLayout/TopBar"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 0)
+text = "New Game"
+
+[node name="MainArea" type="HBoxContainer" parent="GameLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SidePanels" type="VBoxContainer" parent="GameLayout/MainArea"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 0)
+
+[node name="LogPanel" type="PanelContainer" parent="GameLayout/MainArea/SidePanels"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LogContainer" type="VBoxContainer" parent="GameLayout/MainArea/SidePanels/LogPanel"]
+layout_mode = 2
+
+[node name="LogHeader" type="Button" parent="GameLayout/MainArea/SidePanels/LogPanel/LogContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 28)
+text = "📜 Action Log ▼"
+
+[node name="LogScroll" type="ScrollContainer" parent="GameLayout/MainArea/SidePanels/LogPanel/LogContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LogContent" type="VBoxContainer" parent="GameLayout/MainArea/SidePanels/LogPanel/LogContainer/LogScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RulesPanel" type="PanelContainer" parent="GameLayout/MainArea/SidePanels"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RulesContainer" type="VBoxContainer" parent="GameLayout/MainArea/SidePanels/RulesPanel"]
+layout_mode = 2
+
+[node name="RulesHeader" type="Button" parent="GameLayout/MainArea/SidePanels/RulesPanel/RulesContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 28)
+text = "📖 Rules ►"
+
+[node name="RulesScroll" type="ScrollContainer" parent="GameLayout/MainArea/SidePanels/RulesPanel/RulesContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="RulesContent" type="VBoxContainer" parent="GameLayout/MainArea/SidePanels/RulesPanel/RulesContainer/RulesScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayArea" type="VBoxContainer" parent="GameLayout/MainArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AIArea" type="VBoxContainer" parent="GameLayout/MainArea/PlayArea"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AILabelContainer" type="HBoxContainer" parent="GameLayout/MainArea/PlayArea/AIArea"]
+layout_mode = 2
+
+[node name="AILabel" type="Label" parent="GameLayout/MainArea/PlayArea/AIArea/AILabelContainer"]
+layout_mode = 2
+text = "🤖 AI Opponent"
+theme_override_colors/font_color = Color(0.8, 0.6, 0.6, 1)
+
+[node name="AITurnIndicator" type="Label" parent="GameLayout/MainArea/PlayArea/AIArea/AILabelContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5, 0.5, 1)
+text = " AI TURN ►"
+
+[node name="AIHand" type="HBoxContainer" parent="GameLayout/MainArea/PlayArea/AIArea"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 85)
+alignment = 1
+
+[node name="Spacer" type="Control" parent="GameLayout/MainArea/PlayArea/AIArea"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 10)
+
+[node name="FieldAndCards" type="HBoxContainer" parent="GameLayout/MainArea/PlayArea/AIArea"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AIField" type="HBoxContainer" parent="GameLayout/MainArea/PlayArea/AIArea/FieldAndCards"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="AICards" type="VBoxContainer" parent="GameLayout/MainArea/PlayArea/AIArea/FieldAndCards"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 0)
+
+[node name="AIDeckArea" type="VBoxContainer" parent="GameLayout/MainArea/PlayArea/AIArea/FieldAndCards/AICards"]
+layout_mode = 2
+alignment = 1
+
+[node name="AIDeckDisplay" type="ColorRect" parent="GameLayout/MainArea/PlayArea/AIArea/FieldAndCards/AICards/AIDeckArea"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 85)
+color = Color(0.3, 0.2, 0.4, 1)
+
+[node name="AIDeckCount" type="Label" parent="GameLayout/MainArea/PlayArea/AIArea/FieldAndCards/AICards/AIDeckArea"]
+layout_mode = 2
+text = "25"
+horizontal_alignment = 1
+
+[node name="AIDiscardArea" type="VBoxContainer" parent="GameLayout/MainArea/PlayArea/AIArea/FieldAndCards/AICards"]
+layout_mode = 2
+alignment = 1
+
+[node name="AIDiscard" type="VBoxContainer" parent="GameLayout/MainArea/PlayArea/AIArea/FieldAndCards/AICards/AIDiscardArea"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 85)
+
+[node name="AIDiscardCount" type="Label" parent="GameLayout/MainArea/PlayArea/AIArea/FieldAndCards/AICards/AIDiscardArea"]
+layout_mode = 2
+text = "Discard: 0"
+horizontal_alignment = 1
+
+[node name="Divider" type="HSeparator" parent="GameLayout/MainArea/PlayArea"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 10)
+
+[node name="PlayerArea" type="VBoxContainer" parent="GameLayout/MainArea/PlayArea"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FieldAndCards" type="HBoxContainer" parent="GameLayout/MainArea/PlayArea/PlayerArea"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerCards" type="VBoxContainer" parent="GameLayout/MainArea/PlayArea/PlayerArea/FieldAndCards"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 0)
+
+[node name="PlayerDiscardArea" type="VBoxContainer" parent="GameLayout/MainArea/PlayArea/PlayerArea/FieldAndCards/PlayerCards"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerDiscard" type="VBoxContainer" parent="GameLayout/MainArea/PlayArea/PlayerArea/FieldAndCards/PlayerCards/PlayerDiscardArea"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 85)
+
+[node name="PlayerDiscardCount" type="Label" parent="GameLayout/MainArea/PlayArea/PlayerArea/FieldAndCards/PlayerCards/PlayerDiscardArea"]
+layout_mode = 2
+text = "Discard: 0"
+horizontal_alignment = 1
+
+[node name="PlayerDeckArea" type="VBoxContainer" parent="GameLayout/MainArea/PlayArea/PlayerArea/FieldAndCards/PlayerCards"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerDeckDisplay" type="ColorRect" parent="GameLayout/MainArea/PlayArea/PlayerArea/FieldAndCards/PlayerCards/PlayerDeckArea"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 85)
+color = Color(0.2, 0.3, 0.4, 1)
+
+[node name="PlayerDeckCount" type="Label" parent="GameLayout/MainArea/PlayArea/PlayerArea/FieldAndCards/PlayerCards/PlayerDeckArea"]
+layout_mode = 2
+text = "25"
+horizontal_alignment = 1
+
+[node name="PlayerField" type="HBoxContainer" parent="GameLayout/MainArea/PlayArea/PlayerArea/FieldAndCards"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="PlayerLabelContainer" type="HBoxContainer" parent="GameLayout/MainArea/PlayArea/PlayerArea"]
+layout_mode = 2
+
+[node name="PlayerLabel" type="Label" parent="GameLayout/MainArea/PlayArea/PlayerArea/PlayerLabelContainer"]
+layout_mode = 2
+text = "👤 You"
+theme_override_colors/font_color = Color(0.6, 0.8, 0.6, 1)
+
+[node name="PlayerTurnIndicator" type="Label" parent="GameLayout/MainArea/PlayArea/PlayerArea/PlayerLabelContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
+text = " ◄ YOUR TURN"
+
+[node name="PlayerHand" type="HBoxContainer" parent="GameLayout/MainArea/PlayArea/PlayerArea"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 115)
+alignment = 1
+
+[node name="ReactionPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -80.0
+offset_right = 150.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReactionPanel"]
+layout_mode = 2
+
+[node name="ReactionLabel" type="Label" parent="ReactionPanel/VBoxContainer"]
+layout_mode = 2
+text = "Block with Water?"
+horizontal_alignment = 1
+
+[node name="ReactionTimerBar" type="ProgressBar" parent="ReactionPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 20)
+value = 100.0
+
+[node name="ButtonContainer" type="HBoxContainer" parent="ReactionPanel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReactButton" type="Button" parent="ReactionPanel/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "🛡 Block!"
+
+[node name="PassButton" type="Button" parent="ReactionPanel/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 40)
+text = "Pass"
+
+[node name="EffectPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -120.0
+offset_right = 150.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EffectPanel"]
+layout_mode = 2
+
+[node name="EffectLabel" type="Label" parent="EffectPanel/VBoxContainer"]
+layout_mode = 2
+text = "Choose target:"
+horizontal_alignment = 1
+
+[node name="EffectOptions" type="VBoxContainer" parent="EffectPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameOverPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -120.0
+offset_right = 150.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="GameOverLabel" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "Game Over!"
+horizontal_alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "🔄 Play Again"
+
+[node name="RematchButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "🔄 Rematch"
+
+[node name="RematchStatus" type="Label" parent="GameOverPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Waiting..."
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.9, 0.8, 0.5, 1)
+
+[node name="MainMenuButton" type="Button" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "🏠 Main Menu"
+
+[node name="DiscardViewPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DiscardViewPanel"]
+layout_mode = 2
+
+[node name="DiscardViewTitle" type="Label" parent="DiscardViewPanel/VBoxContainer"]
+layout_mode = 2
+text = "Discard Pile"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DiscardViewPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="DiscardViewCards" type="VBoxContainer" parent="DiscardViewPanel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="DiscardViewPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 35)
+text = "Close"
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -140.0
+offset_right = 180.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "⚙ Settings"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+
+[node name="ThemeContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ThemeLabel" type="Label" parent="SettingsPanel/VBoxContainer/ThemeContainer"]
+layout_mode = 2
+text = "Theme:"
+theme_override_font_sizes/font_size = 14
+
+[node name="ThemeOption" type="OptionButton" parent="SettingsPanel/VBoxContainer/ThemeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimationsCheck" type="CheckBox" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Enable Animations"
+
+[node name="CloseButton" type="Button" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Close"
+
+[node name="DropZone" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -70.0
+offset_right = 100.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GameMenuPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenuPanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "☰ Game Menu"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+
+[node name="HSeparator" type="HSeparator" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "▶ Resume Game"
+
+[node name="HSeparator2" type="HSeparator" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsLabel" type="Label" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+
+[node name="AnimationsCheck" type="CheckBox" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Enable Animations"
+
+[node name="ThemeContainer" type="HBoxContainer" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ThemeLabel" type="Label" parent="GameMenuPanel/VBoxContainer/ThemeContainer"]
+layout_mode = 2
+text = "Theme:"
+
+[node name="ThemeOption" type="OptionButton" parent="GameMenuPanel/VBoxContainer/ThemeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator3" type="HSeparator" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="RulesLabel" type="Label" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+text = "Rules"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+
+[node name="RulesScroll" type="ScrollContainer" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 200)
+
+[node name="RulesContent" type="VBoxContainer" parent="GameMenuPanel/VBoxContainer/RulesScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator4" type="HSeparator" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="GameMenuPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "🏠 Main Menu"
+

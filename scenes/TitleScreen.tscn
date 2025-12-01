@@ -1,0 +1,305 @@
+[gd_scene load_steps=2 format=3 uid="uid://btitle001"]
+
+[ext_resource type="Script" path="res://scripts/TitleScreen.gd" id="1_title"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_title")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12, 0.08, 0.18, 1)
+
+[node name="BackgroundPattern" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.1, 0.22, 0.3)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "✨ Mystic Melee ✨"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.9, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 42
+
+[node name="Subtitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "A Strategic Card Duel"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.7, 0.6, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+
+[node name="MenuButtons" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SinglePlayerButton" type="Button" parent="VBoxContainer/MenuButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(250, 50)
+text = "🎮 Play vs AI"
+theme_override_font_sizes/font_size = 18
+
+[node name="MultiplayerButton" type="Button" parent="VBoxContainer/MenuButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(250, 50)
+text = "🌐 Multiplayer"
+theme_override_font_sizes/font_size = 18
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/MenuButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(250, 50)
+text = "⚙ Settings"
+theme_override_font_sizes/font_size = 18
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/MenuButtons"]
+layout_mode = 2
+custom_minimum_size = Vector2(250, 50)
+text = "🚪 Quit"
+theme_override_font_sizes/font_size = 18
+
+[node name="MultiplayerPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -280.0
+offset_right = 220.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultiplayerPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="MultiplayerPanel/VBoxContainer"]
+layout_mode = 2
+text = "🌐 Multiplayer"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 24
+
+[node name="NameContainer" type="HBoxContainer" parent="MultiplayerPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MultiplayerPanel/VBoxContainer/NameContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="NameInput" type="LineEdit" parent="MultiplayerPanel/VBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Your Name"
+
+[node name="ModeLabel" type="Label" parent="MultiplayerPanel/VBoxContainer"]
+layout_mode = 2
+text = "─── Online Play ───"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.6, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="QuickMatchButton" type="Button" parent="MultiplayerPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "⚡ Quick Match"
+
+[node name="OnlineHostButton" type="Button" parent="MultiplayerPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "🌍 Create Online Room"
+
+[node name="OnlineJoinButton" type="Button" parent="MultiplayerPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "🔗 Join Online Room"
+
+[node name="LanLabel" type="Label" parent="MultiplayerPanel/VBoxContainer"]
+layout_mode = 2
+text = "─── LAN Play ───"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.6, 0.8, 0.6, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="HostButton" type="Button" parent="MultiplayerPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "🏠 Host LAN Game"
+
+[node name="JoinButton" type="Button" parent="MultiplayerPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "🔗 Join LAN Game"
+
+[node name="RoomCodeContainer" type="HBoxContainer" parent="MultiplayerPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="RoomCodeLabel" type="Label" parent="MultiplayerPanel/VBoxContainer/RoomCodeContainer"]
+layout_mode = 2
+text = "XXXX-XXXX-XXXX"
+theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="CopyCodeButton" type="Button" parent="MultiplayerPanel/VBoxContainer/RoomCodeContainer"]
+layout_mode = 2
+text = "📋 Copy"
+
+[node name="OnlineMatchIdContainer" type="HBoxContainer" parent="MultiplayerPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="MatchIdLabel" type="Label" parent="MultiplayerPanel/VBoxContainer/OnlineMatchIdContainer"]
+layout_mode = 2
+text = "Match ID:"
+
+[node name="MatchIdValue" type="Label" parent="MultiplayerPanel/VBoxContainer/OnlineMatchIdContainer"]
+layout_mode = 2
+text = "XXXXXXXX"
+theme_override_colors/font_color = Color(0.4, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 18
+
+[node name="CopyMatchIdButton" type="Button" parent="MultiplayerPanel/VBoxContainer/OnlineMatchIdContainer"]
+layout_mode = 2
+text = "📋 Copy"
+
+[node name="JoinContainer" type="HBoxContainer" parent="MultiplayerPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="JoinCodeInput" type="LineEdit" parent="MultiplayerPanel/VBoxContainer/JoinContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter Room Code"
+
+[node name="JoinConnectButton" type="Button" parent="MultiplayerPanel/VBoxContainer/JoinContainer"]
+layout_mode = 2
+text = "Connect"
+
+[node name="OnlineJoinContainer" type="HBoxContainer" parent="MultiplayerPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="OnlineMatchIdInput" type="LineEdit" parent="MultiplayerPanel/VBoxContainer/OnlineJoinContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter Match ID"
+
+[node name="OnlineJoinConnectButton" type="Button" parent="MultiplayerPanel/VBoxContainer/OnlineJoinContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="StatusLabel" type="Label" parent="MultiplayerPanel/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="WaitingLabel" type="Label" parent="MultiplayerPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Waiting for host..."
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.9, 0.8, 0.5, 1)
+
+[node name="StartGameButton" type="Button" parent="MultiplayerPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+custom_minimum_size = Vector2(0, 45)
+text = "▶ Start Game"
+theme_override_font_sizes/font_size = 18
+
+[node name="CancelButton" type="Button" parent="MultiplayerPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+custom_minimum_size = Vector2(0, 35)
+text = "✖ Cancel"
+theme_override_colors/font_color = Color(1, 0.6, 0.6, 1)
+
+[node name="BackButton" type="Button" parent="MultiplayerPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 35)
+text = "← Back"
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -140.0
+offset_right = 180.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+text = "⚙ Settings"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+
+[node name="ThemeContainer" type="HBoxContainer" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ThemeLabel" type="Label" parent="SettingsPanel/VBoxContainer/ThemeContainer"]
+layout_mode = 2
+text = "Theme:"
+theme_override_font_sizes/font_size = 14
+
+[node name="ThemeOption" type="OptionButton" parent="SettingsPanel/VBoxContainer/ThemeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Close"
+
+[node name="AnimationsCheck" type="CheckBox" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Enable Animations"
